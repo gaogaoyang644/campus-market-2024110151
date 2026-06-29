@@ -10,6 +10,7 @@ export interface TradeItem {
   publishTime: string
   location: string
   images: string[]
+  description: string
   status: string
 }
 

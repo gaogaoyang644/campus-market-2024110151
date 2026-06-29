@@ -10,6 +10,7 @@
       "publishTime": "2026-06-01 10:00",
       "location": "东区宿舍",
       "images": [],
+      "description": "高等数学第七版上册，笔记已标记重点，适合期末复习。",
       "status": "open"
     },
     {
@@ -22,6 +23,7 @@
       "publishTime": "2026-06-02 14:30",
       "location": "西区车棚",
       "images": [],
+      "description": "骑了两年，电池续航约30公里，适合校内代步。",
       "status": "open"
     },
     {
@@ -34,6 +36,7 @@
       "publishTime": "2026-06-03 09:00",
       "location": "教学楼 B 区",
       "images": [],
+      "description": "2026年6月四级真题汇编，全新未拆封。",
       "status": "open"
     },
     {
@@ -46,6 +49,7 @@
       "publishTime": "2026-06-03 16:00",
       "location": "南门音乐社",
       "images": [],
+      "description": "民谣吉他，带琴包和变调夹，适合新手入门。",
       "status": "open"
     },
     {
@@ -58,6 +62,7 @@
       "publishTime": "2026-06-04 11:20",
       "location": "研究生公寓",
       "images": [],
+      "description": "LED护眼台灯，三档亮度可调节，充电式无需插电。",
       "status": "done"
     },
     {
@@ -70,6 +75,7 @@
       "publishTime": "2026-06-05 08:00",
       "location": "体育馆前台",
       "images": [],
+      "description": "威尔胜入门款网球拍，已穿好线，送三个球。",
       "status": "open"
     }
   ],
