@@ -1,0 +1,268 @@
+{
+  "trades": [
+    {
+      "id": 1,
+      "title": "九成新高等数学教材",
+      "price": 15,
+      "category": "教材",
+      "condition": "九成新",
+      "publisher": "理学院学生",
+      "publishTime": "2026-06-01 10:00",
+      "location": "东区宿舍",
+      "images": [],
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "二手电动车低价出",
+      "price": 600,
+      "category": "出行",
+      "condition": "七成新",
+      "publisher": "计算机学院学生",
+      "publishTime": "2026-06-02 14:30",
+      "location": "西区车棚",
+      "images": [],
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "全新四级真题一套",
+      "price": 20,
+      "category": "教材",
+      "condition": "全新",
+      "publisher": "外国语学院学生",
+      "publishTime": "2026-06-03 09:00",
+      "location": "教学楼 B 区",
+      "images": [],
+      "status": "open"
+    },
+    {
+      "id": 4,
+      "title": "吉他入门款出售",
+      "price": 120,
+      "category": "乐器",
+      "condition": "八成新",
+      "publisher": "艺术学院学生",
+      "publishTime": "2026-06-03 16:00",
+      "location": "南门音乐社",
+      "images": [],
+      "status": "open"
+    },
+    {
+      "id": 5,
+      "title": "小台灯护眼款",
+      "price": 25,
+      "category": "日用",
+      "condition": "九成新",
+      "publisher": "经管学院学生",
+      "publishTime": "2026-06-04 11:20",
+      "location": "研究生公寓",
+      "images": [],
+      "status": "done"
+    },
+    {
+      "id": 6,
+      "title": "网球拍初学者款",
+      "price": 80,
+      "category": "体育",
+      "condition": "七成新",
+      "publisher": "体育学院学生",
+      "publishTime": "2026-06-05 08:00",
+      "location": "体育馆前台",
+      "images": [],
+      "status": "open"
+    }
+  ],
+  "lostFound": [
+    {
+      "id": 1,
+      "title": "寻找黑色校园卡",
+      "type": "lost",
+      "itemName": "校园卡",
+      "location": "一食堂附近",
+      "eventTime": "2026-06-02 12:10",
+      "contact": "站内消息联系",
+      "description": "校园卡卡套为黑色，内有学生证。",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "拾到蓝色雨伞",
+      "type": "found",
+      "itemName": "雨伞",
+      "location": "教学楼 A 区",
+      "eventTime": "2026-06-02 18:40",
+      "contact": "站内消息联系",
+      "description": "雨伞放在 A 区一楼值班室。",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "寻找银色U盘",
+      "type": "lost",
+      "itemName": "U盘",
+      "location": "图书馆三楼电子阅览室",
+      "eventTime": "2026-06-03 15:30",
+      "contact": "QQ: 123456789",
+      "description": "银色金属外壳，内有毕业论文初稿。",
+      "status": "open"
+    },
+    {
+      "id": 4,
+      "title": "拾到黑色钱包",
+      "type": "found",
+      "itemName": "钱包",
+      "location": "操场主席台",
+      "eventTime": "2026-06-04 07:20",
+      "contact": "交至保卫处",
+      "description": "内含校园卡及少量现金，已交至保卫处。",
+      "status": "closed"
+    },
+    {
+      "id": 5,
+      "title": "寻找灰色耳机仓",
+      "type": "lost",
+      "itemName": "蓝牙耳机",
+      "location": "二食堂到宿舍途中",
+      "eventTime": "2026-06-04 12:00",
+      "contact": "站内消息联系",
+      "description": "灰色磨砂充电仓，内有左耳耳机。",
+      "status": "open"
+    },
+    {
+      "id": 6,
+      "title": "拾到一串钥匙",
+      "type": "found",
+      "itemName": "钥匙",
+      "location": "西区浴室",
+      "eventTime": "2026-06-05 21:00",
+      "contact": "交至宿管阿姨处",
+      "description": "共三把钥匙，含一把自行车锁钥匙。",
+      "status": "done"
+    }
+  ],
+  "groupBuys": [
+    {
+      "id": 1,
+      "title": "周五晚火锅拼单",
+      "type": "拼餐",
+      "targetCount": 6,
+      "currentCount": 3,
+      "deadline": "2026-06-05 17:00",
+      "location": "学校南门",
+      "publisher": "计算机学院学生",
+      "description": "AA 制，人数够后统一预约。",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "四六级资料团购",
+      "type": "学习资料",
+      "targetCount": 10,
+      "currentCount": 7,
+      "deadline": "2026-06-06 22:00",
+      "location": "线上确认",
+      "publisher": "外国语学院学生",
+      "description": "达到人数后统一下单。",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "奶茶第二杯半价拼单",
+      "type": "拼餐",
+      "targetCount": 2,
+      "currentCount": 1,
+      "deadline": "2026-06-05 14:00",
+      "location": "蜜雪冰城店门口",
+      "publisher": "经管学院学生",
+      "description": "第二杯半价活动，口味任选。",
+      "status": "done"
+    },
+    {
+      "id": 4,
+      "title": "考研数学网课拼车",
+      "type": "课程",
+      "targetCount": 5,
+      "currentCount": 4,
+      "deadline": "2026-06-10 23:59",
+      "location": "线上",
+      "publisher": "理学院学生",
+      "description": "张宇强化班网课，人均仅需40元。",
+      "status": "open"
+    },
+    {
+      "id": 5,
+      "title": "水果拼单：整箱车厘子",
+      "type": "拼购",
+      "targetCount": 8,
+      "currentCount": 5,
+      "deadline": "2026-06-07 18:00",
+      "location": "西区水果店自提",
+      "publisher": "生科院学生",
+      "description": "整箱进口车厘子约10斤，人均30元左右。",
+      "status": "closed"
+    }
+  ],
+  "errands": [
+    {
+      "id": 1,
+      "title": "帮取快递到宿舍楼下",
+      "taskType": "取快递",
+      "reward": 3,
+      "from": "菜鸟驿站",
+      "to": "西区 5 栋",
+      "deadline": "2026-06-03 19:00",
+      "publisher": "西区学生",
+      "description": "快递较轻，送到宿舍楼下即可。",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "帮买一份晚餐",
+      "taskType": "代买",
+      "reward": 5,
+      "from": "二食堂",
+      "to": "实验楼 302",
+      "deadline": "2026-06-03 18:30",
+      "publisher": "实验室学生",
+      "description": "需要在 18:30 前送到。",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "代取打印资料",
+      "taskType": "取件",
+      "reward": 2,
+      "from": "图书馆一楼打印室",
+      "to": "研究生公寓 D 栋",
+      "deadline": "2026-06-04 12:00",
+      "publisher": "研究生院学生",
+      "description": "已打印好，凭取件码领取。",
+      "status": "done"
+    },
+    {
+      "id": 4,
+      "title": "帮忙搬行李到校门口",
+      "taskType": "搬运",
+      "reward": 10,
+      "from": "西区 3 栋 501",
+      "to": "学校南门",
+      "deadline": "2026-06-06 14:00",
+      "publisher": "土木学院学生",
+      "description": "一个行李箱和一个编织袋，需要男生帮忙。",
+      "status": "open"
+    },
+    {
+      "id": 5,
+      "title": "代签到",
+      "taskType": "代办",
+      "reward": 8,
+      "from": "教学楼 C 座",
+      "to": "校礼堂",
+      "deadline": "2026-06-05 08:30",
+      "publisher": "艺术学院学生",
+      "description": "周五早八讲座，需要代签到。",
+      "status": "closed"
+    }
+  ]
+}
