@@ -16,3 +16,7 @@ export interface GroupBuyItem {
 export function getGroupBuys() {
   return http.get<GroupBuyItem[]>('/groupBuys')
 }
+
+export function addGroupBuy(data: Omit<GroupBuyItem, 'id'>) {
+  return http.post<GroupBuyItem>('/groupBuys', data)
+}
