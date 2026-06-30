@@ -1,7 +1,7 @@
 import http from './http'
 
 export interface TradeItem {
-  id: number
+  id?: number
   title: string
   price: number
   category: string
@@ -9,7 +9,7 @@ export interface TradeItem {
   publisher: string
   publishTime: string
   location: string
-  images: string[]
+  image: string
   description: string
   status: string
 }
@@ -18,6 +18,6 @@ export function getTrades() {
   return http.get<TradeItem[]>('/trades')
 }
 
-export function addTrade(data: Omit<TradeItem, 'id'>) {
+export function createTrade(data: TradeItem) {
   return http.post<TradeItem>('/trades', data)
 }

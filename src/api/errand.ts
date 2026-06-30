@@ -1,7 +1,7 @@
 import http from './http'
 
 export interface ErrandItem {
-  id: number
+  id?: number
   title: string
   taskType: string
   reward: number
@@ -17,6 +17,6 @@ export function getErrands() {
   return http.get<ErrandItem[]>('/errands')
 }
 
-export function addErrand(data: Omit<ErrandItem, 'id'>) {
+export function createErrand(data: ErrandItem) {
   return http.post<ErrandItem>('/errands', data)
 }
