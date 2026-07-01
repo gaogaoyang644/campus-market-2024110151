@@ -1,15 +1,22 @@
 <template>
   <header class="app-header">
-    <div class="brand">
-      <span class="logo">校园轻集市</span>
-      <span class="slogan">轻量、可信、面向校园生活</span>
+    <div class="header-inner">
+      <h1 class="logo">校园轻集市</h1>
+      <p class="slogan">轻享校园，自在交易</p>
+      <div class="user-info">
+        <span class="user-name">{{ userStore.displayName }}</span>
+        <span class="user-badge">{{ userStore.isLoggedIn ? '已登录' : '未登录' }}</span>
+      </div>
     </div>
     <AppNav />
   </header>
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/stores/user'
 import AppNav from './AppNav.vue'
+
+const userStore = useUserStore()
 </script>
 
 <style scoped>
@@ -37,5 +44,24 @@ import AppNav from './AppNav.vue'
 .slogan {
   font-size: 13px;
   color: #6b7280;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.user-name {
+  color: #333;
+  font-weight: 500;
+}
+.user-badge {
+  color: #52c41a;
+  font-size: 12px;
+  background: #f6ffed;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #b7eb8f;
 }
 </style>

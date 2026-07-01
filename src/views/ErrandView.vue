@@ -23,6 +23,14 @@
         <template #footer>
           <strong>￥{{ item.reward }}</strong>
           <span :class="['status', item.status]">{{ statusMap[item.status] }}</span>
+          <button class="favorite-btn" @click="favoriteStore.toggleFavorite({
+            id: item.id!,
+            type: 'errand',
+            title: item.title,
+            description: item.description
+          })">
+            {{ favoriteStore.isFavorite('errand', item.id!) ? '已收藏' : '收藏' }}
+          </button>
         </template>
       </ItemCard>
     </div>
@@ -34,7 +42,9 @@ import { onMounted, ref } from 'vue'
 import ItemCard from '../components/ItemCard.vue'
 import EmptyState from '../components/EmptyState.vue'
 import { getErrands, type ErrandItem } from '../api/errand'
+import { useFavoriteStore } from '../stores/favorite'
 
+const favoriteStore = useFavoriteStore()
 const errands = ref<ErrandItem[]>([])
 
 const statusMap: Record<string, string> = {
@@ -97,5 +107,18 @@ onMounted(async () => {
 .status.closed {
   background: #f3f4f6;
   color: #6b7280;
+}
+.favorite-btn {
+  margin-left: 12px;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #374151;
+}
+.favorite-btn:hover {
+  background: #1677ff;
+  color: #fff;
 }
 </style>
