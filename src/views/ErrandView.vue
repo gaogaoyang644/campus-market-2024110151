@@ -5,14 +5,31 @@
       <p>发布或接单跑腿任务，互助互惠更方便。</p>
     </div>
 
+    <SearchBar
+      v-model="keyword"
+      placeholder="搜索标题、任务类型、地点或描述"
+    />
+
+    <LoadingState
+      v-if="loading"
+      text="正在加载跑腿任务..."
+    />
+
+    <ErrorState
+      v-else-if="error"
+      message="跑腿数据加载失败，请检查 Mock 服务是否正常运行。"
+      show-retry
+      @retry="loadErrands"
+    />
+
     <EmptyState
-      v-if="errands.length === 0"
-      text="暂无跑腿任务"
+      v-else-if="filteredItems.length === 0"
+      :text="keyword ? '未搜索到符合条件的跑腿任务' : '暂无跑腿任务'"
     />
 
     <div v-else class="list">
       <ItemCard
-        v-for="item in errands"
+        v-for="item in filteredItems"
         :key="item.id"
         :title="item.title"
         :description="item.description"
@@ -23,12 +40,16 @@
         <template #footer>
           <strong>￥{{ item.reward }}</strong>
           <span :class="['status', item.status]">{{ statusMap[item.status] }}</span>
-          <button class="favorite-btn" @click="favoriteStore.toggleFavorite({
-            id: item.id!,
-            type: 'errand',
-            title: item.title,
-            description: item.description
-          })">
+          <button
+            class="favorite-btn"
+            :class="{ active: favoriteStore.isFavorite('errand', item.id!) }"
+            @click="favoriteStore.toggleFavorite({
+              id: item.id!,
+              type: 'errand',
+              title: item.title,
+              description: item.description
+            })"
+          >
             {{ favoriteStore.isFavorite('errand', item.id!) ? '已收藏' : '收藏' }}
           </button>
         </template>
@@ -38,14 +59,20 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import ItemCard from '../components/ItemCard.vue'
 import EmptyState from '../components/EmptyState.vue'
+import LoadingState from '../components/LoadingState.vue'
+import ErrorState from '../components/ErrorState.vue'
+import SearchBar from '../components/SearchBar.vue'
 import { getErrands, type ErrandItem } from '../api/errand'
 import { useFavoriteStore } from '../stores/favorite'
 
 const favoriteStore = useFavoriteStore()
 const errands = ref<ErrandItem[]>([])
+const loading = ref(false)
+const error = ref(false)
+const keyword = ref('')
 
 const statusMap: Record<string, string> = {
   open: '进行中',
@@ -53,9 +80,37 @@ const statusMap: Record<string, string> = {
   done: '已完成',
 }
 
-onMounted(async () => {
-  const res = await getErrands()
-  errands.value = res.data
+const filteredItems = computed(() => {
+  const value = keyword.value.trim()
+  if (!value) return errands.value
+
+  return errands.value.filter((item) => {
+    return (
+      item.title.includes(value) ||
+      item.taskType.includes(value) ||
+      item.from.includes(value) ||
+      item.to.includes(value) ||
+      item.description.includes(value)
+    )
+  })
+})
+
+async function loadErrands() {
+  loading.value = true
+  error.value = false
+
+  try {
+    const res = await getErrands()
+    errands.value = res.data
+  } catch {
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  loadErrands()
 })
 </script>
 
@@ -108,6 +163,7 @@ onMounted(async () => {
   background: #f3f4f6;
   color: #6b7280;
 }
+
 .favorite-btn {
   margin-left: 12px;
   border: none;
@@ -117,8 +173,19 @@ onMounted(async () => {
   background: #f3f4f6;
   color: #374151;
 }
+
+.favorite-btn.active {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
 .favorite-btn:hover {
   background: #1677ff;
   color: #fff;
+}
+
+.favorite-btn.active:hover {
+  background: #dbeafe;
+  color: #2563eb;
 }
 </style>
