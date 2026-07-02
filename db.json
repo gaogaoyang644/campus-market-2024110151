@@ -283,5 +283,25 @@
       "description": "周五早八讲座，需要代签到。",
       "status": "closed"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "test",
+      "password": "123456",
+      "name": "测试用户",
+      "college": "计算机学院",
+      "grade": "2023 级",
+      "bio": "热爱校园生活，喜欢分享闲置好物。"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "password": "admin123",
+      "name": "管理员",
+      "college": "信息学院",
+      "grade": "2022 级",
+      "bio": "校园轻集市管理员。"
+    }
   ]
 }

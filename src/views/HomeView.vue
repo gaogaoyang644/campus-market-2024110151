@@ -6,6 +6,11 @@
       欢迎来到校园轻集市 — 一个属于同学们的校园生活服务平台。<br>
       在这里，你可以交易二手商品、发布失物招领、寻找拼单搭子、委托跑腿任务，让校园生活更加便捷。
     </p>
+
+    <div v-if="!userStore.isLoggedIn" class="home-actions">
+      <RouterLink to="/login" class="btn-primary">登录</RouterLink>
+      <RouterLink to="/register" class="btn-secondary">注册</RouterLink>
+    </div>
   </div>
 </template>
 
@@ -47,5 +52,30 @@ const greeting = computed(() => {
   color: #666;
   line-height: 1.8;
   max-width: 600px;
+}
+
+.home-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
 }
 </style>

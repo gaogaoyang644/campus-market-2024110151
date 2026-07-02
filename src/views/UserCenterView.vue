@@ -1,49 +1,60 @@
 <template>
   <section class="page">
-    <div class="profile-card">
-      <div class="avatar">
-        {{ userStore.displayName.slice(0, 1) }}
+    <template v-if="userStore.isLoggedIn">
+      <div class="profile-card">
+        <div class="avatar">
+          {{ userStore.displayName.slice(0, 1) }}
+        </div>
+
+        <div>
+          <h1>{{ userStore.displayName }}</h1>
+          <p>{{ userStore.userDescription }}</p>
+          <p>{{ userStore.currentUser.bio }}</p>
+        </div>
       </div>
 
-      <div>
-        <h1>{{ userStore.displayName }}</h1>
-        <p>{{ userStore.userDescription }}</p>
-        <p>{{ userStore.currentUser.bio }}</p>
+      <div class="panel">
+        <h2>我的收藏</h2>
+
+        <EmptyState
+          v-if="favoriteStore.favorites.length === 0"
+          text="暂无收藏内容"
+        />
+
+        <div v-else class="favorite-list">
+          <ItemCard
+            v-for="item in favoriteStore.favorites"
+            :key="`${item.type}-${item.id}`"
+            :title="item.title"
+            :description="item.description"
+            :tag="getTypeLabel(item.type)"
+            :location="item.location"
+          >
+            <template #footer>
+              <button class="remove-btn" @click="favoriteStore.removeFavorite(item.type, item.id)">
+                取消收藏
+              </button>
+            </template>
+          </ItemCard>
+        </div>
       </div>
-    </div>
 
-    <div class="panel">
-      <h2>我的收藏</h2>
-
-      <EmptyState
-        v-if="favoriteStore.favorites.length === 0"
-        text="暂无收藏内容"
-      />
-
-      <div v-else class="favorite-list">
-        <ItemCard
-          v-for="item in favoriteStore.favorites"
-          :key="`${item.type}-${item.id}`"
-          :title="item.title"
-          :description="item.description"
-          :tag="getTypeLabel(item.type)"
-          :location="item.location"
-        >
-          <template #footer>
-            <button class="remove-btn" @click="favoriteStore.removeFavorite(item.type, item.id)">
-              取消收藏
-            </button>
-          </template>
-        </ItemCard>
+      <div class="panel">
+        <h2>我的发布</h2>
+        <p class="hint">
+          本模块用于展示当前用户发布过的信息。后续可继续与接口数据联动。
+        </p>
       </div>
-    </div>
+    </template>
 
-    <div class="panel">
-      <h2>我的发布</h2>
-      <p class="hint">
-        本模块用于展示当前用户发布过的信息。Day5 阶段可先完成结构展示，后续可继续与接口数据联动。
-      </p>
-    </div>
+    <template v-else>
+      <div class="not-logged-in">
+        <h2>请先登录</h2>
+        <p>登录后可以查看个人资料、收藏内容和发布历史。</p>
+        <RouterLink to="/login" class="btn-primary">去登录</RouterLink>
+        <RouterLink to="/register" class="btn-secondary">去注册</RouterLink>
+      </div>
+    </template>
   </section>
 </template>
 
@@ -122,6 +133,42 @@ function getTypeLabel(type: string) {
   border-radius: 999px;
   padding: 6px 12px;
   cursor: pointer;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.not-logged-in {
+  padding: 48px 24px;
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+}
+
+.not-logged-in h2 {
+  margin: 0 0 8px;
+}
+
+.not-logged-in p {
+  margin: 0 0 24px;
+  color: #6b7280;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  margin: 0 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn-secondary {
   background: #f3f4f6;
   color: #374151;
 }

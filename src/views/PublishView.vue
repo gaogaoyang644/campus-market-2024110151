@@ -3,7 +3,10 @@
     <div class="page-header">
       <h1>发布信息</h1>
       <p>发布二手、失物招领、拼单或跑腿信息。</p>
-      <p class="publisher-info">当前发布者：<strong>{{ userStore.displayName }}</strong>（{{ userStore.userDescription }}）</p>
+      <template v-if="userStore.isLoggedIn">
+        <p class="publisher-info">当前发布者：<strong>{{ userStore.displayName }}</strong>（{{ userStore.userDescription }}）</p>
+      </template>
+      <p v-else class="publisher-info warn">请先<RouterLink to="/login">登录</RouterLink>后再发布信息。</p>
     </div>
 
     <div class="form-card">
@@ -142,7 +145,7 @@
 
 <script setup lang="ts">
 import { computed, ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import FormField from '../components/FormField.vue'
 import { useUserStore } from '@/stores/user'
 import { createTrade } from '../api/trade'
@@ -185,6 +188,12 @@ const routeMap: Record<string, string> = {
 const targetRoute = computed(() => routeMap[type.value] || '/trade')
 
 async function handleSubmit() {
+  if (!userStore.isLoggedIn) {
+    window.alert('请先登录后再发布信息')
+    router.push('/login')
+    return
+  }
+
   if (!form.title || !form.description) {
     window.alert('请填写标题和描述')
     return
