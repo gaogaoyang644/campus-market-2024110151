@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import type { UserAccount } from '../api/user'
 
 const STORAGE_KEY = 'campus_market_user'
 

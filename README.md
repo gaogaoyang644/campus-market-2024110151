@@ -1,126 +1,125 @@
-Campus Market Seed
+# 校园轻集市 (Campus Market)
 
-《校园轻集市》AI 辅助前端工程实践课程种子仓库
+基于 Vue 3 的校园轻集市前端项目——校园二手交易、失物招领、拼单搭子、跑腿委托综合平台。
 
-⸻
+## 项目简介
 
-项目简介
+校园轻集市是一个面向高校学生的校园生活服务平台，提供四大核心业务模块：
+- **二手交易**：浏览、搜索、收藏校园二手商品
+- **失物招领**：发布和查看失物/拾物信息
+- **拼单搭子**：寻找拼单伙伴，分摊优惠
+- **跑腿委托**：发布和接受跑腿任务
 
-Campus Market Seed 是《校园轻集市》课程的统一种子仓库（Seed Repository）。
+## 技术栈
 
-本仓库不仅提供 Vue 3 前端项目模板，还包含课程文档、开发规范、AI 协作规范、过程性证据模板以及自动检测框架，为整个实训提供统一的开发基础。
+| 类别 | 技术 |
+|------|------|
+| 前端框架 | Vue 3 (Composition API) |
+| 编程语言 | TypeScript |
+| 构建工具 | Vite |
+| 路由 | Vue Router 4 |
+| 状态管理 | Pinia |
+| 网络请求 | Axios |
+| Mock 后端 | JSON Server |
+| 代码规范 | ESLint + Oxlint |
+| AI 协作 | OpenCode |
 
-本仓库是所有同学开展项目实践的起点。
+## 快速开始
 
-⸻
-
-项目目标
-
-通过本课程，你将完成一个基于 Vue 3 的校园轻集市前端项目，并体验真实的软件工程开发流程。
-
-课程重点包括：
-
-* Vue 3 工程化开发
-* Git 版本管理
-* AI Coding 协作开发
-* 软件工程规范
-* 过程性证据管理
-* 项目验收与自动检测
-
-⸻
-
-快速开始
-
-首次使用本仓库，请按照以下顺序阅读文档：
-
-README.md
-    │
-    ▼
-docs/guide/Environment_Setup.md
-    │
-    ▼
-docs/guide/Getting_Started.md
-
-随后执行：
-
-git clone <课程仓库地址>
-cd campus-market-seed
+### 安装依赖
+```bash
 nvm use
 pnpm install
+```
+
+### 启动 Mock 服务（终端 1）
+```bash
+pnpm mock
+```
+JSON Server 将运行在 http://localhost:3001
+
+### 启动前端项目（终端 2）
+```bash
 pnpm dev
+```
+访问 http://localhost:5173
 
-浏览器访问：
+### 构建项目
+```bash
+pnpm build
+```
 
-http://localhost:5173
+## 项目目录说明
 
-如果页面显示：
+```
+campus-market-2024110151
+├── docs/
+│   ├── ai/                     # AI 协作记录
+│   ├── evidence/               # 每日过程证据 (Day1-Day7)
+│   └── guide/                  # 环境配置与快速开始指南
+├── public/                     # 静态资源
+├── src/                        # 项目源码
+│   ├── api/                    # API 接口封装 (Axios)
+│   │   ├── http.ts             # Axios 实例与拦截器
+│   │   ├── trade.ts            # 二手交易 API
+│   │   ├── lostFound.ts        # 失物招领 API
+│   │   ├── groupBuy.ts         # 拼单搭子 API
+│   │   ├── errand.ts           # 跑腿委托 API
+│   │   └── user.ts             # 用户 API
+│   ├── components/             # 公共组件
+│   │   ├── AppHeader.vue       # 顶部导航栏
+│   │   ├── AppLayout.vue       # 整体布局
+│   │   ├── AppNav.vue          # 底部导航
+│   │   ├── EmptyState.vue      # 空状态组件
+│   │   ├── ErrorState.vue      # 错误状态组件
+│   │   ├── FormField.vue       # 表单字段组件
+│   │   ├── ItemCard.vue        # 信息卡片组件
+│   │   ├── LoadingState.vue    # 加载状态组件
+│   │   └── SearchBar.vue       # 搜索栏组件
+│   ├── router/                 # 路由配置
+│   ├── stores/                 # Pinia 状态管理
+│   │   ├── user.ts             # 用户状态
+│   │   └── favorite.ts         # 收藏状态
+│   ├── views/                  # 页面视图
+│   │   ├── HomeView.vue        # 首页
+│   │   ├── TradeView.vue       # 二手交易
+│   │   ├── LostFoundView.vue   # 失物招领
+│   │   ├── GroupBuyView.vue    # 拼单搭子
+│   │   ├── ErrandView.vue      # 跑腿委托
+│   │   ├── PublishView.vue     # 发布页面
+│   │   ├── LoginView.vue       # 登录
+│   │   ├── RegisterView.vue    # 注册
+│   │   ├── UserCenterView.vue  # 个人中心
+│   │   └── MessageView.vue     # 消息中心
+│   ├── style/                  # 全局样式
+│   ├── App.vue                 # 根组件
+│   └── main.ts                 # 入口文件
+├── db.json                     # Mock 数据
+├── CHECK_REPORT.md             # 检测报告
+└── package.json                # 项目配置
+```
 
-项目启动成功
+## 核心功能
 
-说明开发环境已经配置完成。
+- 四大业务列表：二手交易、失物招领、拼单搭子、跑腿委托
+- 关键词搜索与按分类筛选
+- 信息收藏与个人中心查看
+- 信息发布与表单校验
+- 模拟登录/注册与用户状态持久化
+- 加载状态、空状态、错误状态提示
 
-⸻
+## 每日开发记录
 
-项目结构
+| 天数 | 内容 |
+|------|------|
+| Day1 | 项目启动与业务梳理 |
+| Day2 | 页面骨架与路由导航 |
+| Day3 | Mock 数据建模与列表渲染 |
+| Day4 | 发布表单与数据新增 |
+| Day5 | 状态管理与用户中心 |
+| Day6 | 交互优化与体验完善 |
+| Day7 | 综合验收与项目展示 |
 
-campus-market-seed
-├── docs
-│   ├── ai              # AI 协作规范
-│   ├── evidence        # 每日过程证据
-│   └── guide           # 学生使用指南
-├── scripts             # 自动检测工具
-├── src                 # 项目源码
-└── CHECK_REPORT.md     # 自动检测报告（后续版本启用）
+## AI 协作说明
 
-⸻
-
-文档导航
-
-文档	说明
-docs/guide/Environment_Setup.md	配置课程开发环境
-docs/guide/Getting_Started.md	Day1 快速开始指南
-docs/ai/AI_Collaboration_Card.md	AI 协作记录规范
-docs/evidence/	每日过程性证据模板
-
-⸻
-
-技术栈
-
-* Vue 3
-* TypeScript
-* Vite
-* Vue Router
-* Pinia
-* ESLint
-* Oxlint
-
-⸻
-
-开发规范
-
-在整个实训过程中，请遵循以下要求：
-
-* 使用 Git 管理项目开发过程；
-* 每完成一个独立功能及时提交 Commit；
-* 合理使用 AI Coding 工具辅助开发；
-* 保留 AI 协作记录；
-* 每天完成对应的 Evidence；
-* 保持项目始终能够正常运行。
-
-⸻
-
-后续版本
-
-后续版本将逐步提供：
-
-* 自动检测工具（Check Engine）
-* 自动评分报告
-* Git 提交分析
-* AI 协作分析
-* 教师验收工具
-
-⸻
-
-License
-
-本仓库仅用于《校园轻集市》课程教学与实践。
+本项目在开发过程中使用 AI Coding 工具 (OpenCode) 辅助完成页面骨架、Mock 数据、接口封装、表单设计、状态管理和交互优化。开发者对 AI 生成内容进行了人工审查、修改和取舍，具体过程记录在 `docs/evidence/` 和 `docs/ai/` 中。
